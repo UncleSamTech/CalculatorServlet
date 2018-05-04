@@ -1,0 +1,38 @@
+package calcPackage;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+written by Samuel Iwuchukwu
+ * Servlet implementation class CalculatorClass
+ The class must extend HttpServlet class
+ */
+@WebServlet("/CalculatorClass")
+public class CalculatorClass extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+   the doGet() method is created with two arguements
+   @args request and @args response 
+   the request object gets request from the server while the response object is used for displaying result
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		int num1 = Integer.parseInt(request.getParameter("num1"));
+		int num2 = Integer.parseInt(request.getParameter("num2"));
+		int sum = num1 + num2;
+		PrintWriter writer = response.getWriter();
+		writer.println("The sum of the two numbers : " + num1 + "and " + num2 + "is" + sum);
+		
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+}
